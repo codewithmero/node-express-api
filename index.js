@@ -3,12 +3,14 @@ import bodyParser from 'body-parser';
 
 const app = express();
 
+// Fetching routes
+import users from './routes/users.js';
+
 app.use(express.json());
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
-});
+// Linking routes
+app.use('/api/users', users);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
